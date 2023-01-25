@@ -4,6 +4,12 @@
 
 Simple command line tool, that helps you to fastly evaluate expressions. Based on [evalexpr](https://crates.io/crates/evalexpr) crate.
 
+## Installation
+
+```sh
+cargo install feval
+```
+
 ## Operators
 
 Supported binary operators:
