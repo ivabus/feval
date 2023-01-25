@@ -30,7 +30,11 @@ fn main() {
     match args.len() {
         2 => {
             let expr = all(args[1].clone());
-            println!("{}", evalexpr::eval(&expr).unwrap())
+            let result = evalexpr::eval(&expr.trim());
+            match result {
+                Ok(succ_res) => println!("{}", succ_res),
+                Err(err) => println!("Error: {}", err)
+            }
         },
         1 => {main_loop()},
         _ => {
