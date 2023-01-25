@@ -101,4 +101,4 @@ Supported unary operators:
 
 ## License
 
-This crate is primarily distributed under the terms of the MIT license.
+This project is primarily distributed under the terms of the MIT license.
