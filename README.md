@@ -94,7 +94,8 @@ Supported unary operators:
 | `shr`                | 2               | Int                    | Computes the given integer bitwise shifted right by the other given integer |
 
 ## Constants
-
+| Identifier | Value | Description |
+|------------|-------|-------------|
 | `math::pi` | 3.141592653589793 (`std::f64::consts::PI`) | Pi |
 | `math::e` | 2.718281828459045 (`std::f64::consts::E`) | Euler's number |
 
