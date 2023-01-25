@@ -14,7 +14,11 @@ fn main_loop() {
     stdout().flush().unwrap();
     let mut input = String::new();
     while stdin().read_line(&mut input).unwrap() != 0 {
-        println!("{}", evalexpr::eval(&input.trim()).unwrap());
+        let result = evalexpr::eval(&input.trim());
+        match result {
+            Ok(succ_res) => println!("{}", succ_res),
+            Err(_) => println!("Invalid input")
+        }
         input.clear();
         print!(">>> ");
         stdout().flush().unwrap();
