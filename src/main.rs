@@ -17,7 +17,7 @@ fn main_loop() {
         let result = evalexpr::eval(&input.trim());
         match result {
             Ok(succ_res) => println!("{}", succ_res),
-            Err(_) => println!("Invalid input")
+            Err(err) => println!("Error: {}", err)
         }
         input.clear();
         print!(">>> ");
