@@ -1,10 +1,13 @@
-use evalexpr;
 use std::{env::args, io::{stdin, stdout, Write}};
-mod tasks;
+
+use evalexpr;
+
 use crate::tasks::tasks::all;
 
+mod tasks;
+
 fn help() {
-    println!(r#"feval: evaluate expressions
+    println!(r#"feval: help
 usage: provide exactly one argument (with expression) or no arguments for shell mode.
 example: feval "math::sin(30 * math::pi / 180)""#);
 }
@@ -14,7 +17,7 @@ fn main_loop() {
     stdout().flush().unwrap();
     let mut input = String::new();
     while stdin().read_line(&mut input).unwrap() != 0 {
-        let result = evalexpr::eval(&input.trim());
+        let result = evalexpr::eval(&all(input.trim().to_string()));
         match result {
             Ok(succ_res) => println!("{}", succ_res),
             Err(err) => println!("Error: {}", err)
@@ -33,7 +36,10 @@ fn main() {
             let result = evalexpr::eval(&expr.trim());
             match result {
                 Ok(succ_res) => println!("{}", succ_res),
-                Err(err) => println!("Error: {}", err)
+                Err(err) => {
+                    println!("Error: {}", err);
+                    std::process::exit(127);
+                }
             }
         },
         1 => {main_loop()},
@@ -41,11 +47,9 @@ fn main() {
             if args.len() > 2 {
                 println!("Too many args.");
                 help();
-                return
             } else if args.len() < 1 {
                 println!("Too few args.");
                 help();
-                return
             }
         }
     }
