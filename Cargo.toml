@@ -1,6 +1,6 @@
 [package]
 name = "feval"
-version = "0.3.0"
+version = "0.4.0"
 edition = "2021"
 description = "clt for fast evaluations"
 readme = "README.md"
@@ -9,4 +9,4 @@ license = "MIT"
 authors = ["Ivan ivabus Bushchik"]
 
 [dependencies]
-evalexpr = "8.1.0"
+evalexpr = "10.0.0"
