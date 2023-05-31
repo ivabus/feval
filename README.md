@@ -1,4 +1,4 @@
-# fEval
+# fEval [![Build](https://github.com/ivabus/feval/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/ivabus/feval/actions/workflows/build.yml)
 
 > Fast EVALuator
 
