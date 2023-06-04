@@ -5,6 +5,7 @@ use std::{
 
 use evalexpr;
 use evalexpr::HashMapContext;
+use linefeed::{Interface, ReadResult};
 
 use crate::tasks::tasks::all;
 
@@ -19,19 +20,15 @@ example: feval "math::sin(30 * math::pi / 180)""#
 }
 
 fn main_loop() {
-	print!(">>> ");
-	stdout().flush().unwrap();
-	let mut input = String::new();
+	let mut reader = Interface::new("feval").unwrap();
+	reader.set_prompt(">>> ").unwrap();
 	let mut context = HashMapContext::new();
-	while stdin().read_line(&mut input).unwrap() != 0 {
+	while let ReadResult::Input(input) = reader.read_line().unwrap() {
 		let result = evalexpr::eval_with_context_mut(&all(input.trim().to_string()), &mut context);
 		match result {
 			Ok(succ_res) => println!("{}", succ_res),
 			Err(err) => println!("Error: {}", err),
 		}
-		input.clear();
-		print!(">>> ");
-		stdout().flush().unwrap();
 	}
 }
 
